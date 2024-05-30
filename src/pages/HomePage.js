@@ -12,6 +12,7 @@ const HomePageW = () => {
   const [mined_token, setMined_Token] = useState(0);
   const [mineStatus, setMineStatus] = useState("STOPPED");
   const [disableClaim, setDisableClaim] = useState(true);
+  const [startMine, setStartMine] = useState(false);
   const [balance, setBalance] = useState(0);
   const [leftTime, setLeftTime] = useState(null);
   const [burn, setBurn] = useState(false);
@@ -21,6 +22,7 @@ const HomePageW = () => {
       .patch(`api/user/${user?.id}`, { current_bal: mined_token, mining_start: new Date(), ref: referrer })
       .then((response) => {
         setBurn(false);
+        setStartMine(true)
         setMineStatus("ACTIVE");
         setBalance(response.data.data["current_bal"]);
         setMined_Token(0);
@@ -51,6 +53,7 @@ const HomePageW = () => {
       if (leftTime > 0) {
         setLeftTime((leftTime) => leftTime - 1000);
       } else {
+        setStartMine(false)
         clearInterval(interval);
       }
     }, 1000);
@@ -73,6 +76,7 @@ const HomePageW = () => {
       setMineStatus("STOPPED");
       setBurn(true);
     } else {
+      setStartMine(false)
       setMined_Token((mined_token) => 0);
     }
   }, [leftTime]);
@@ -99,7 +103,7 @@ const HomePageW = () => {
             <span className="flex justify-center text-[1rem] font-bold font-['Bookman_Old_Style'] select-none">LepreCoin/hour 1.0000</span>
           </div>
           <div className="flex justify-center items-center">
-            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { disableClaim ? alert("You can't claim tokens yet, try in a few minutes") :  claimTokens()}} />
+            <ProgressBarButton started={startMine} value={mined_token.toFixed(4)} onClick={() => { disableClaim ? alert("You can't claim tokens yet, try in a few minutes") :  claimTokens()}} />
           </div>
           <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none mb-4">
             {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
