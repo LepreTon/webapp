@@ -51,6 +51,7 @@ const HomePageW = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (leftTime > 0) {
+        setStartMine(true)
         setLeftTime((leftTime) => leftTime - 1000);
       } else {
         setStartMine(false)
