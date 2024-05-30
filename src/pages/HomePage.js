@@ -91,7 +91,7 @@ const HomePageW = () => {
             <h3 className="text-1xl font-bold font-['Bookman_Old_Style'] select-none">LepreCoin Balance:</h3>
             <span className="flex justify-center text-2xl font-bold">
               <p className="flex font-bold text-4xl text-yellow-400 pt-2 font-['Bookman_Old_Style'] bg-[#2f2f2f] px-4 py-1 rounded-[3rem] select-none">
-                {balance}
+                {balance.toFixed(4)}
               </p>
             </span>
           </div>
@@ -99,7 +99,7 @@ const HomePageW = () => {
             <span className="flex justify-center text-[1rem] font-bold font-['Bookman_Old_Style'] select-none">LepreCoin/hour 1.0000</span>
           </div>
           <div className="flex justify-center items-center">
-            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { !disableClaim ? alert("You can't claim tokens yet, try in a few minutes") :  claimTokens()}} />
+            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { disableClaim ? alert("You can't claim tokens yet, try in a few minutes") :  claimTokens()}} />
           </div>
           <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none mb-4">
             {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
