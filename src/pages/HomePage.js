@@ -98,7 +98,7 @@ const HomePageW = () => {
             <span className="flex justify-center text-[1rem] font-bold font-['Bookman_Old_Style'] select-none">LepreCoin/hour 1.0000</span>
           </div>
           <div className="flex justify-center items-center">
-            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { !disableClaim ? claimTokens() : alert("You can't claim tokens yet, try in a few minutes")}} />
+            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { !disableClaim ? alert("You can't claim tokens yet, try in a few minutes") :  claimTokens()}} />
           </div>
           <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none mb-4">
             {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
