@@ -34,6 +34,7 @@ const HomePageW = () => {
     host
       .get(`api/user/${user?.id}`)
       .then((response) => {
+        setDisableClaim(true)
         setBalance(response.data[0]["current_bal"]);
         setPhoto(response.data[0]["photo"]);
         setReferrer(response.data[0]["referrer"]);
@@ -97,7 +98,7 @@ const HomePageW = () => {
             <span className="flex justify-center text-[1rem] font-bold font-['Bookman_Old_Style'] select-none">LepreCoin/hour 1.0000</span>
           </div>
           <div className="flex justify-center items-center">
-            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { disableClaim === false ? claimTokens() : alert("You can't claim tokens yet, try in a few minutes")}} />
+            <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => { !disableClaim ? claimTokens() : alert("You can't claim tokens yet, try in a few minutes")}} />
           </div>
           <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none mb-4">
             {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
