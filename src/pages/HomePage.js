@@ -73,9 +73,12 @@ const HomePageW = () => {
   return (
     <>
       <div className="bg-main-color h-screen w-screen flex items-center text-center justify-center">
-        <div className="bg-main-color2 rounded-t-[3rem] w-full h-5/6 shadow-20xl-inner">
+        <div className="bg-main-color2 rounded-t-[3rem] mt-10 w-full h-5/6 shadow-20xl-inner flex flex-col justify-between items-center overflow-x-hidden">
           <div className="w-36 h-36 rounded-full bg-transparent border-2 border-shadow-color inline-flex items-center justify-center mb-2 mt-2 shadow-inner shadow-shadow-color font-['Bookman_Old_Style'] select-none">
             {photo ? <img src={photo} alt="" /> : <p>{user?.first_name}</p>}
+          </div>
+          <div>
+            <span className="flex justify-center text-[1.3rem] py-2 font-bold font-['Bookman_Old_Style']">{user?.username}</span>
           </div>
           <div className="flex flex-col py-2 justify-center text-white px-10 rounded-[3rem] font-bold">
             <h3 className="text-1xl font-bold font-['Bookman_Old_Style'] select-none">LepreCoin Balance:</h3>
@@ -85,24 +88,18 @@ const HomePageW = () => {
               </p>
             </span>
           </div>
-
-          <div className="flex justify-center items-center">
-            <div className="flex flex-col justify-center w-80 h-40 text-white border-2 border-shadow-color bg-neutral-900 shadow-2xl font-bold rounded-[3rem] mb-10 mt-3">
-              <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none">
-                ⛏️ Mining:
-                <p className={(mineStatus === "ACTIVE" ? "text-shadow-color " : "text-red-500 ") + "pl-2 font-['Bookman_Old_Style']"}>{mineStatus}</p>
-              </span>
-              <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none">
-                {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
-                <p className="pl-2 font-['Bookman_Old_Style'] text-red-500">
-                  {Math.floor(leftTime / 1000 / 60 / 60) + "h:" + Math.floor((leftTime / 1000 / 60) % 60) + "m:" + Math.floor((leftTime / 1000) % 60) + "s"}
-                </p>
-              </span>
-            </div>
+          <div className="flex justify-center items-center mt-[8rem] ">
+            <span className="flex justify-center text-[1rem] font-bold font-['Bookman_Old_Style'] select-none">LepreCoin/hour 1.0000</span>
           </div>
-          <div className="flex justify-center items-center ">
+          <div className="flex justify-center items-center">
             <ProgressBarButton value={mined_token.toFixed(4)} onClick={() => claimTokens()} />
           </div>
+          <span className="flex justify-center text-[1.3rem] py-3 font-bold font-['Bookman_Old_Style'] select-none mb-4">
+            {burn ? "🔥 Time to Burn:" : "⏳ Time Left:"}
+            <p className="pl-2 font-['Bookman_Old_Style'] text-red-500">
+              {Math.floor(leftTime / 1000 / 60 / 60) + "h:" + Math.floor((leftTime / 1000 / 60) % 60) + "m:" + Math.floor((leftTime / 1000) % 60) + "s"}
+            </p>
+          </span>
         </div>
       </div>
     </>

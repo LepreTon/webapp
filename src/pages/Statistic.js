@@ -42,7 +42,7 @@ const StatisticW = () => {
 
   return (
     <div className="bg-main-color h-screen w-screen flex items-center text-center justify-center">
-      <div className="bg-main-color2 rounded-t-[3rem] w-full h-5/6 shadow-20xl-inner">
+    <div className="bg-main-color2 flex flex-col justify-center mt-10 align-items-center rounded-t-[3rem] w-full h-5/6 shadow-20xl-inner overflow-x-hidden">
         <div className="flex flex-col py-2 justify-center text-white px-10 rounded-[3rem] font-bold mt-4 animate-slide-in">
           <span className="flex justify-center text-2xl font-bold">
             <p className="flex font-bold text-4xl text-yellow-400 pt-2 font-['Bookman_Old_Style'] bg-[#2f2f2f] px-4 py-1 mb-4 rounded-[3rem]">Statistic</p>

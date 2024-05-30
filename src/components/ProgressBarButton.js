@@ -5,7 +5,7 @@ const ProgressBarButton = ({ value, ...props}) => {
 
   return (
     <button
-      className="relative px-4 py-5 rounded-[2rem] w-full md:w-80 border-2 border-yellow-400 text-white active:bg-neutral-900 mx-10 cursor-pointer z-20 overflow-hidden select-none"
+      className="relative px-4 min-w-[20rem] py-[2rem] rounded-[2rem] w-full md:w-80 border-2 border-yellow-400 text-white active:bg-neutral-900 mx-10 cursor-pointer z-20 overflow-hidden select-none"
       {...props}
     >
       <span className="absolute text-2xl font-bold font-['Bookman_Old_Style'] top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 z-30 select-none">Claim</span>
