@@ -21,7 +21,6 @@ const HomePageW = () => {
       .patch(`api/user/${user?.id}`, { current_bal: mined_token, mining_start: new Date(), ref: referrer })
       .then((response) => {
         setBurn(false);
-        setDisableClaim(true)
         setMineStatus("ACTIVE");
         setBalance(response.data.data["current_bal"]);
         setMined_Token(0);
@@ -34,7 +33,6 @@ const HomePageW = () => {
     host
       .get(`api/user/${user?.id}`)
       .then((response) => {
-        setDisableClaim(true)
         setBalance(response.data[0]["current_bal"]);
         setPhoto(response.data[0]["photo"]);
         setReferrer(response.data[0]["referrer"]);
@@ -61,9 +59,12 @@ const HomePageW = () => {
   }, [leftTime]);
 
   useEffect(() => {
-    if (leftTime < (2 * 60 * 60 * 1000) - (1000 * 60 * 15)) {
+    if (leftTime > (2 * 60 * 60 * 1000) - (1000 * 60 * 15)) {
+      setDisableClaim(true)
+    } else {
       setDisableClaim(false)
     }
+
     if (leftTime > 60 * 60 * 1000) {
       setMineStatus("ACTIVE");
       setMined_Token((mined_token) => mined_token + 0.00027777);
@@ -90,7 +91,7 @@ const HomePageW = () => {
             <h3 className="text-1xl font-bold font-['Bookman_Old_Style'] select-none">LepreCoin Balance:</h3>
             <span className="flex justify-center text-2xl font-bold">
               <p className="flex font-bold text-4xl text-yellow-400 pt-2 font-['Bookman_Old_Style'] bg-[#2f2f2f] px-4 py-1 rounded-[3rem] select-none">
-                <CountUp end={balance} duration={1.5} decimals={4} decimal="." />
+                {balance}
               </p>
             </span>
           </div>
