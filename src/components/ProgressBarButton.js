@@ -5,7 +5,7 @@ const ProgressBarButton = ({ value, started, disabled, ...props}) => {
 
   return (
     <button
-      className="relative px-4 min-w-[20rem] py-[2rem] rounded-[2rem] w-full md:w-80 border-2 border-yellow-400 text-white active:bg-neutral-900 mx-10 cursor-pointer z-20 overflow-hidden select-none"
+      className={(disabled ? "active:bg-red-500" : 'active:bg-neutral-900') + " relative px-4 min-w-[20rem] py-[2rem] rounded-[2rem] w-full md:w-80 border-2 border-yellow-400 text-white mx-10 cursor-pointer z-20 overflow-hidden select-none"}
       disabled={disabled}
       {...props}
     >
