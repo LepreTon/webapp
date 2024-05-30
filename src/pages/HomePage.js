@@ -89,9 +89,11 @@ const HomePageW = () => {
           <div className="w-36 h-36 rounded-full bg-transparent border-2 border-shadow-color inline-flex items-center justify-center mb-2 mt-2 shadow-inner shadow-shadow-color font-['Bookman_Old_Style'] select-none">
             {photo ? <img src={photo} alt="" /> : <p>{user?.first_name}</p>}
           </div>
+          {user?.username &&
           <div>
-            <span className="flex justify-center text-[1.3rem] py-2 font-bold font-['Bookman_Old_Style']">{user?.username}</span>
+          <span className="flex justify-center text-[1.3rem] py-2 font-bold font-['Bookman_Old_Style']">@{user?.username}</span>
           </div>
+          }
           <div className="flex flex-col py-2 justify-center text-white px-10 rounded-[3rem] font-bold">
             <h3 className="text-1xl font-bold font-['Bookman_Old_Style'] select-none">LepreCoin Balance:</h3>
             <span className="flex justify-center text-2xl font-bold">
