@@ -7,6 +7,7 @@ const ReferralsW = () => {
   const [deeplink, setDeeplink] = useState(null);
   const [referrer, setReferrer] = useState(null);
   const [myrefs, setMyRefs] = useState();
+  const [isCopied, setIsCopied] = useState(false); // Добавлено новое состояние
 
   useEffect(() => {
     if (user) {
@@ -26,7 +27,7 @@ const ReferralsW = () => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(deeplink);
-    // alert("🔗 Referral link copied! \n\n" + deeplink);
+    setIsCopied(true); // Установите состояние в true после копирования
   };
 
   return (
@@ -61,8 +62,11 @@ const ReferralsW = () => {
         <span className="opacity-50 text-[0.7rem] mt-4 font-italic font-['Bookman_Old_Style']">
           For each referral, you will receive <br></br> 5% of your referral's coins
         </span>
-        <button className="flex justify-center border-2 w-[20rem] md:w-80 border-yellow-400 mx-10 p-4 align-middle mt-[1rem] mb-4 bg-green-500/20 rounded-3xl" onClick={copyToClipboard}>
-          <span className="text-2xl font-bold font-['Bookman_Old_Style']">Invite a fren</span>
+        <button
+          className={`flex justify-center border-2 w-[20rem] md:w-80 mx-10 p-4 border-yellow-400 align-middle mt-[1rem] mb-4 rounded-3xl ${isCopied ? 'bg-green-500/40' : 'bg-green-500/20'}`}
+          onClick={copyToClipboard}
+        >
+          <span className="text-2xl font-bold font-['Bookman_Old_Style']">{isCopied ? 'Copied!' : 'Invite a fren'}</span>
         </button>
       </div>
     </div>
