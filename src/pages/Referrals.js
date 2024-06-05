@@ -11,7 +11,7 @@ const ReferralsW = () => {
 
   useEffect(() => {
     if (user) {
-      setDeeplink(`https://t.me/leprechaun_rush_bot?start=${btoa(user.id)}`);
+      setDeeplink(`https://t.me/lepretonia_bot?start=${btoa(user.id)}`);
     }
   }, [user]);
 
